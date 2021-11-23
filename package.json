@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start:api": "json-server --watch data.json --id uuid --port 3001",
-    "webpack": "webpack"
+    "webpack": "webpack",
+    "start:server": "node server/index.js"
   },
   "repository": {
     "type": "git",
