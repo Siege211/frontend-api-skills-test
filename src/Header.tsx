@@ -8,12 +8,18 @@ function Header() {
       {/* <Link to="/">
         Home
       </Link> */}
-      <Link to="/recipes">
-        Recipes
-      </Link>
-      <Link to="/specials">
-        Specials
-      </Link>
+      <ul>
+        <li>
+          <Link to="/recipes" className="link">
+            Recipes
+          </Link>
+        </li>
+        <li>
+          <Link to="/specials" className="link">
+            Specials
+          </Link>
+        </li>
+      </ul>
     </nav>
     </>
   );
