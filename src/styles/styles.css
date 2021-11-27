@@ -67,6 +67,7 @@ nav button .link {
 
 article {
 	margin: 0.5em;
+	min-height: 340px;
     width: 55vw;
     box-sizing: border-box;
 	transition: all 0.1s ease-in;
@@ -91,7 +92,7 @@ article header {
 .card {
 	max-width: 220px;
 	display: block;
-	min-height: 250px;
+	/* min-height: 250px; */
 	flex-shrink: 0;
 	border-radius: 5px;
 	border-width: 1px;
@@ -140,4 +141,12 @@ article header {
 
 .chicken {
 	background-color: brown;
+}
+
+.large-photo {
+	/* height: 350px; */
+	width: 100%;
+	/* background: url(http://room-cordoba.com/media/blog/images/raspberry-honey-dessert-cake-92136-1_TITLE.jpeg);
+	background-size: cover; */
+	text-align: center;
 }

@@ -1,7 +1,8 @@
 import * as React from "react";
-import {BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom';
+import {BrowserRouter as Router, Routes, Route, Link, useLocation} from 'react-router-dom';
 import Header from './Header'
 import Recipes from "./Recipes";
+import Detail from "./Detail";
 // todo: define this elsewhere
 export interface Props {
   userName?: string;
@@ -23,7 +24,6 @@ const App : React.FC<Props> = ({children}) => {
             return res
         })
         .then(response => {
-            console.log(response)
             setRecipes(response)
         })
         // .catch(error => setResult({ status: 'error', error }));
@@ -39,32 +39,24 @@ const App : React.FC<Props> = ({children}) => {
             return res
         })
         .then(response => {
-            console.log(response)
             setSpecials(response)
         })
         // .catch(error => setResult({ status: 'error', error }));
     }, [])
-    console.log(recipeList)
+    const location = useLocation() // TODO: destructure
+    console.log(location, location.pathname.split('/:'))
     return (
-        <Router>
+        <>
             <Header></Header>
         <Routes>
         <Route path ='/'>
             {/* {children} */}
             <Route index element = {<Recipes recipes={recipeList}/>}></Route>
-            <Route path='/recipes' element = {<Recipes recipes={recipeList}/>}>
-            </Route>
-            {/* <Route path='/specials'>
-                {recipes.map(recipe=> (
-                    <div key={recipe.uuid}>
-                        {recipe.title}
-                        but with specials lol
-                    </div>
-                ))}
-            </Route> */}
+            <Route path='/recipes' element = {<Recipes recipes={recipeList}/>}> </Route>
+            <Route path={`/recipe/:${location.pathname.split('/:').pop()}`} element={<Detail recipes={recipeList} uuid={location.pathname.split('/:').pop()}/>}> </Route>
         </Route>
         </Routes>
-        </Router>
+        </>
     );
 }
 

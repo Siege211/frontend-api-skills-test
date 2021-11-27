@@ -6,6 +6,8 @@ import Recipes from "./Recipes";
 import './styles/styles.css'
 
 ReactDOM.render(
-    <App/>,
+    <Router>
+    <App/>
+    </Router>,
     document.getElementById("root")
 );
