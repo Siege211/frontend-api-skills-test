@@ -11,6 +11,7 @@ export interface Props {
 const App : React.FC<Props> = ({children}) => {
 
     const [recipeList, setRecipes] = React.useState([]);
+    const [specialsList, setSpecials] = React.useState([])
     React.useEffect(() => {
         // ideally this will fetch 
             //1. everytime you open the page
@@ -19,12 +20,27 @@ const App : React.FC<Props> = ({children}) => {
         fetch("http://localhost:3001/recipes")
         .then((response) => {
             let res = response.json()
-            console.log(res)
             return res
         })
         .then(response => {
             console.log(response)
             setRecipes(response)
+        })
+        // .catch(error => setResult({ status: 'error', error }));
+    }, [])
+    React.useEffect(() => {
+        // ideally this will fetch 
+            //1. everytime you open the page
+            //2. and everytime you submit or update a recipe
+            // but will only set the state if there is a change?? hmmm
+        fetch("http://localhost:3001/specials")
+        .then((response) => {
+            let res = response.json()
+            return res
+        })
+        .then(response => {
+            console.log(response)
+            setSpecials(response)
         })
         // .catch(error => setResult({ status: 'error', error }));
     }, [])
