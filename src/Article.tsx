@@ -8,11 +8,11 @@ interface Props {
     },
     string?: string
 }
-const Article: React.FC<Props> = (props) => {
+const Article: React.FC<Props> = ({images}) => {
     return (
         <article className="card featured">
             {/* w_614,h_461/ */}
-            <div className="box"><img src={`http://localhost:3001/img/queso_brat_scramble--s.jpg`}/></div>
+            <div className="box"><img src={`http://localhost:3001${images.small}`}/></div>
             <header className="card-content">
                 <span className="card-category chicken">food category</span>
                 <span className="card-header">recipe name</span>
