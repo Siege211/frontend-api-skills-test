@@ -144,9 +144,9 @@ article header {
 }
 
 .large-photo {
-	/* height: 350px; */
-	width: 100%;
-	/* background: url(http://room-cordoba.com/media/blog/images/raspberry-honey-dessert-cake-92136-1_TITLE.jpeg);
-	background-size: cover; */
+	max-width: 1240px;
+}
+
+.large-photo-container {
 	text-align: center;
 }

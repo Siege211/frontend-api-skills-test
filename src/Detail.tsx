@@ -17,8 +17,8 @@ const Detail : React.FC<Props> = ({recipes, uuid}) => {
     // const recipe = recipeList.find(x => x.uuid == path.uuid)
     return (
         <>
-        <div className="large-photo">
-            <img src={`http://localhost:3001${recipeDetails.images.full}`}/>
+        <div className="large-photo-container">
+            <img className="large-photo" src={`http://localhost:3001${recipeDetails.images.full}`}/>
         </div>
         <p>{recipeDetails.title}</p>
       {/* full size image here! */}
