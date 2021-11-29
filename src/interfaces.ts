@@ -33,7 +33,12 @@ interface Special {
     uuid: string
 }
 
+interface idMap {
+    [index: string]: number
+  }
+
 export {
     Recipe,
-    Special
+    Special,
+    idMap
   }

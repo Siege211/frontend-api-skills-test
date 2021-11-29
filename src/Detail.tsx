@@ -1,6 +1,6 @@
 import * as React from "react";
 import {BrowserRouter as Router, Routes, Route, Link, useLocation} from 'react-router-dom';
-import {Recipe, Special} from './interfaces'
+import {Recipe, Special, idMap} from './interfaces'
 
 interface Props {
     recipes: Array<Recipe>
@@ -8,13 +8,11 @@ interface Props {
     specialsList: Array<Special>
 }
 
-interface ingredientIDs_interface {
-  [index: string]: number
-}
+
 
 const Detail : React.FC<Props> = ({recipes, uuid, specialsList}) => {
     const recipeDetails = recipes.find(x => x.uuid == uuid)
-    const ingredientIDs: ingredientIDs_interface = {}
+    const ingredientIDs: idMap = {}
     recipeDetails.ingredients.forEach(({uuid}, i) => {
       ingredientIDs[uuid] = i
     })
