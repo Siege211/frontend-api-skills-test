@@ -42,7 +42,13 @@ const Recipes: React.FC<Props> = ({recipes}) => {
 		<section className="wrapper product">
 			{recipes.map(recipe => (
 				// TODO: destructuring
-				<Article images={recipe.images} uuid={recipe.uuid}/>
+				<Article 
+					images={recipe.images}
+					uuid={recipe.uuid}
+					title={recipe.title}
+					description={recipe.description}
+					servings={recipe.servings}
+				/>
 			))}
 		</section>
         </>
