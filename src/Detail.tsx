@@ -13,9 +13,6 @@ interface ingredientIDs_interface {
 }
 
 const Detail : React.FC<Props> = ({recipes, uuid, specialsList}) => {
-
-    const location = useLocation(
-    )
     const recipeDetails = recipes.find(x => x.uuid == uuid)
     const ingredientIDs: ingredientIDs_interface = {}
     recipeDetails.ingredients.forEach(({uuid}, i) => {
