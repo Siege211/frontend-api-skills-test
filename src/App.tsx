@@ -34,7 +34,7 @@ const App : React.FC<Props> = ({children}) => {
         })
     }, [])
     const location = useLocation() // TODO: destructure
-    console.log(location, location.pathname.split('/:'))
+    const recipeID = location.pathname.split('/:').pop()
     return (
         <>
             <Header></Header>
@@ -42,7 +42,7 @@ const App : React.FC<Props> = ({children}) => {
         <Route path ='/'>
             <Route index element = {<Recipes recipes={recipeList}/>}></Route>
             <Route path='/recipes' element = {<Recipes recipes={recipeList}/>}> </Route>
-            <Route path={`/recipe/:${location.pathname.split('/:').pop()}`} element={<Detail recipes={recipeList} uuid={location.pathname.split('/:').pop()} specialsList={specialsList}/>}> </Route>
+            <Route path={`/recipe/:${recipeID}`} element={<Detail recipes={recipeList} uuid={recipeID} specialsList={specialsList}/>}> </Route>
         </Route>
         </Routes>
         </>
