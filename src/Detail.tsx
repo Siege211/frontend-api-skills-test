@@ -13,8 +13,8 @@ interface Props {
 const Detail : React.FC<Props> = ({recipes, uuid, specialsList}) => {
     const recipeDetails = recipes.find(x => x.uuid == uuid)
     const ingredientIDs: idMap = {}
-    recipeDetails.ingredients.forEach(({uuid}, i) => {
-      ingredientIDs[uuid] = i
+    specialsList.forEach(({ingredientId}, i) => {
+      ingredientIDs[ingredientId] = i
     })
     return (
         <>
