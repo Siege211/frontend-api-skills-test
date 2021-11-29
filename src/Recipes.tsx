@@ -9,14 +9,19 @@ const Recipes: React.FC<Props> = ({recipes}) => {
     return (
         <>
 		<section className="wrapper product">
-			{recipes.map(recipe => (
-				// TODO: destructuring
+			{recipes.map(({
+				images,
+				uuid,
+				title,
+				description,
+				servings,
+			}) => (
 				<Article 
-					images={recipe.images}
-					uuid={recipe.uuid}
-					title={recipe.title}
-					description={recipe.description}
-					servings={recipe.servings}
+					images={images}
+					uuid={uuid}
+					title={title}
+					description={description}
+					servings={servings}
 				/>
 			))}
 		</section>
