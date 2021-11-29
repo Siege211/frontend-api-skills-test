@@ -177,3 +177,8 @@ article header {
   .right-col .container {
 	padding-right: 55px;
   }
+
+  .link {
+	color: inherit;
+	text-decoration: inherit;
+  }

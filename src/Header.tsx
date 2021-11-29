@@ -14,11 +14,6 @@ function Header() {
             Recipes
           </Link>
         </li>
-        <li>
-          <Link to="/specials" className="link">
-            Specials
-          </Link>
-        </li>
       </ul>
     </nav>
     </>
