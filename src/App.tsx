@@ -4,12 +4,9 @@ import Header from './Header'
 import Recipes from "./Recipes";
 import Detail from "./Detail";
 
-export interface Props {
-  userName?: string;
-  lang?: string;
-}
 
-const App : React.FC<Props> = ({children}) => {
+
+const App : React.FC = () => {
 
     const [recipeList, setRecipes] = React.useState([]);
     const [specialsList, setSpecials] = React.useState([])
