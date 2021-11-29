@@ -53,7 +53,7 @@ const App : React.FC<Props> = ({children}) => {
             {/* {children} */}
             <Route index element = {<Recipes recipes={recipeList}/>}></Route>
             <Route path='/recipes' element = {<Recipes recipes={recipeList}/>}> </Route>
-            <Route path={`/recipe/:${location.pathname.split('/:').pop()}`} element={<Detail recipes={recipeList} uuid={location.pathname.split('/:').pop()}/>}> </Route>
+            <Route path={`/recipe/:${location.pathname.split('/:').pop()}`} element={<Detail recipes={recipeList} uuid={location.pathname.split('/:').pop()} specialsList={specialsList}/>}> </Route>
         </Route>
         </Routes>
         </>

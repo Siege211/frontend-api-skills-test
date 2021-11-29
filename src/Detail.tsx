@@ -1,64 +1,82 @@
 import * as React from "react";
 import {BrowserRouter as Router, Routes, Route, Link, useLocation} from 'react-router-dom';
-import {Recipe} from './interfaces'
+import {Recipe, Special} from './interfaces'
 
 interface Props {
     recipes: Array<Recipe>
     uuid: string
+    specialsList: Array<Special>
 }
 
-const Detail : React.FC<Props> = ({recipes, uuid}) => {
+interface ingredientIDs_interface {
+  [index: string]: number
+}
+
+const Detail : React.FC<Props> = ({recipes, uuid, specialsList}) => {
 
     const location = useLocation(
     )
-    console.log(recipes, location)
     const recipeDetails = recipes.find(x => x.uuid == uuid)
-    console.log(recipeDetails)
+    const ingredientIDs: ingredientIDs_interface = {}
+    recipeDetails.ingredients.forEach(({uuid}, i) => {
+      ingredientIDs[uuid] = i
+    })
+
     // const recipe = recipeList.find(x => x.uuid == path.uuid)
     return (
         <>
-        <div className="large-photo-container">
-            <img className="large-photo" src={`http://localhost:3001${recipeDetails.images.full}`}/>
-        </div>
-        <p>{recipeDetails.title}</p>
-      {/* full size image here! */}
-    {/* <div class="content">
-      <div class="left-col">
-        <div class="container">
-          <h3>Ingredients</h3>
-          <ul>
-            <li>2 cups thickened cream</li>
-            &nbsp;
-            <li>1 tablespoon icing sugar mixture</li>
-            &nbsp;
-            <li>2 x 125g punnets fresh raspberries</li>
-            &nbsp;
-            <li>460g packet double unfilled sponge cakes</li>
-            &nbsp;
-            <li>1/3 cup honey, warmed</li>
-            &nbsp;
-            <li>2 tablespoons pistachio kernels, chopped</li>
-          </ul>
-         
-        </div>
-      </div>   
-      <div class="right-col">
-        <div class="container">
-           <h2>Raspberry Honey Dessert Cake</h2>
-          <p>You'll have a sweet on the plate in no time with this easy recipe.</p>
-          <h4>Directions</h4>
-          <ol>
-            <li>Using an electric mixer, beat cream and icing sugar together until medium peakes. Add 2/3 of the raspberries. Beat unitl mixture is combined and raspberries are roughly chopped</li>
-            &nbsp;
-            <li>Using a serrated knife, cut each sponge in half. Place one cake on serving plate. Brush liberally with honey. Top 1/4 cream mixture. Repeat layering, finishing with a layer of cream. Sprinkle with remaining raspberries and pistachios. Serve</li>
-            
-          </ol>
-          <p></p>
-        </div>
-      </div>     
+          <div className="large-photo-container">
+              <img className="large-photo" src={`http://localhost:3001${recipeDetails.images.full}`}/>
           </div>
-        </div>
-    </div> */}
+        <div className="content">
+          <div className="left-col">
+            <div className="container">
+              <h3>Ingredients</h3>
+              <ul>
+                {recipeDetails.ingredients.map(ingredient => {
+                  let special = null
+                  if (ingredient.uuid in ingredientIDs) {
+                    special = specialsList[ingredientIDs[ingredient.uuid]]
+                  }
+                  return (
+                    <>
+                    <li>{`${ingredient.amount} ${ingredient.measurement} ${ingredient.name}`}</li>
+                    {special && 
+                      <>
+                        <p>{`${special.title}- ${special.type}`}<br/>{special.text}</p>
+                      </>
+                    }
+                    &nbsp;
+                    </>
+                  )
+                })}
+              </ul>   
+            </div>
+          </div>   
+          <div className="right-col">
+            <div className="container">
+              <h2>{recipeDetails.title}</h2>
+              <p>{recipeDetails.description}</p>
+              {/* <p>You'll have a sweet on the plate in no time with this easy recipe.</p> */}
+              <h4>Directions</h4>
+              <ol>
+                {recipeDetails.directions.map(({instructions, optional}) => {
+                  return (
+                    <>
+                    {/* if it's optional do the detail/select tag thing */}
+                      <li>
+                        {optional && <b>[Optional] </b>}
+                        {instructions}
+                        </li>
+                      &nbsp;
+                    </>
+                  )
+                })}
+              </ol>
+              <p></p>
+            </div>
+        </div>     
+      </div>
         </>
     )
 }

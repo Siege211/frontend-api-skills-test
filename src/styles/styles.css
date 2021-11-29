@@ -150,3 +150,30 @@ article header {
 .large-photo-container {
 	text-align: center;
 }
+
+.content {
+	float: left;
+	
+  }
+
+.left-col {
+	Width: 350px;
+	float: left;
+	background: white;
+	height: 400px;	
+  }
+  
+  .right-col {
+	width: 750px;
+	float: left;
+	background: white;
+	height: 400px;
+  }
+  
+  .left-col .container {
+	padding: 0 55px;
+  }
+  
+  .right-col .container {
+	padding-right: 55px;
+  }

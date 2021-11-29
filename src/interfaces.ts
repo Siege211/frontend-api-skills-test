@@ -20,10 +20,20 @@ interface Recipe {
     }>
     directions: Array<{
         instructions: string
-        option: boolean
+        optional: boolean
     }>
+}
+
+interface Special {
+    geo: string
+    ingredientId: string
+    text: string
+    title: string
+    type: string
+    uuid: string
 }
 
 export {
     Recipe,
+    Special
   }
