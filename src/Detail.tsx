@@ -21,8 +21,6 @@ const Detail : React.FC<Props> = ({recipes, uuid, specialsList}) => {
     recipeDetails.ingredients.forEach(({uuid}, i) => {
       ingredientIDs[uuid] = i
     })
-
-    // const recipe = recipeList.find(x => x.uuid == path.uuid)
     return (
         <>
           <div className="large-photo-container">
@@ -57,13 +55,11 @@ const Detail : React.FC<Props> = ({recipes, uuid, specialsList}) => {
             <div className="container">
               <h2>{recipeDetails.title}</h2>
               <p>{recipeDetails.description}</p>
-              {/* <p>You'll have a sweet on the plate in no time with this easy recipe.</p> */}
               <h4>Directions</h4>
               <ol>
                 {recipeDetails.directions.map(({instructions, optional}) => {
                   return (
                     <>
-                    {/* if it's optional do the detail/select tag thing */}
                       <li>
                         {optional && <b>[Optional] </b>}
                         {instructions}

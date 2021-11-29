@@ -5,9 +5,6 @@ function Header() {
   return (
     <>
     <nav>
-      {/* <Link to="/">
-        Home
-      </Link> */}
       <ul>
         <li>
           <Link to="/recipes" className="link">

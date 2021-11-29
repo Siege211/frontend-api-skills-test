@@ -16,12 +16,9 @@ interface Props {
 const Article: React.FC<Props> = ({images, title, uuid, description, servings}) => {
     return (
         <Link to={`/recipe/:${uuid}`} className="link">
-        {/* <Link to={`/recipe/:${title.replace(/ /g,"_")}`}></Link> */}
             <article className="card featured">
-                {/* TODO remove: w_614,h_461/ */}
                 <div className="box"><img src={`http://localhost:3001${images.small}`}/></div>
                 <header className="card-content">
-                    {/* <span className="card-category chicken">food category</span> */}
                     <span className="card-header">{title}</span>
                     <span className="card-desc">{description}</span>
                 </header>
